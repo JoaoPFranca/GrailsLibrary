@@ -16,8 +16,12 @@ class ClienteService {
         return response
     }
 
+    def getById(Serializable id) {
+        return Cliente.get(id)
+    }
 
     def list(GrailsParameterMap params) {
+        params.max = params.max ?: GlobalConfig.itemsPerPage()
         List<Cliente> clienteList = Cliente.createCriteria().list(params) {
             if (params?.colName && params?.colValue) {
                 like(params.colName, "%" + params.colValue + "%")
