@@ -20,7 +20,7 @@
 
 
             <div class="form-action-panel">
-                <g:submitButton class="btn btn-primary" name="save" value="${g.message(code: "save")}"/>
+                <g:submitButton class="btn btn-primary" name="save" value="Salvar"/>
                 <g:link controller="cliente" action="index" class="btn btn-primary"/>
             </div>
 
