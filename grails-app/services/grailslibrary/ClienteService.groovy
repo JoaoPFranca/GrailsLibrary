@@ -1,6 +1,7 @@
 package grailslibrary
 
 import grails.web.servlet.mvc.GrailsParameterMap
+import grailslibrary.Cliente
 
 class ClienteService {
 

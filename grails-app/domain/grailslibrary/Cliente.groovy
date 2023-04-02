@@ -8,6 +8,8 @@ class Cliente {
     String telefone
     String email
 
+    static hasMany = [emprestimos: Emprestimo]
+
     static constraints = {
         nomecompleto(nullable: false, blank: false, unique: true)
         endereco(nullable: false, blank: false)

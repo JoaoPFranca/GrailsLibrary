@@ -1,5 +1,6 @@
 package grailslibrary
 
+import grailslibrary.Livro
 import grails.web.servlet.mvc.GrailsParameterMap
 
 class LivroService {
@@ -19,6 +20,7 @@ class LivroService {
     def getById(Serializable id) {
         return Livro.get(id)
     }
+
 
     def list(GrailsParameterMap params) {
         params.max = params.max ?: GlobalConfig.itemsPerPage()

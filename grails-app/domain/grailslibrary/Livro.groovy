@@ -8,6 +8,8 @@ class Livro {
     String isbn
 
 
+    static hasMany = [emprestimos: Emprestimo]
+
     static constraints = {
         titulo(nullable: false, blank: false)
         autor(nullable: false, blank: false)
