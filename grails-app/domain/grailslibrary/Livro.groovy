@@ -15,4 +15,8 @@ class Livro {
         autor(nullable: false, blank: false)
         isbn(nullable: false, unique: true, blank: false)
     }
+
+    static mapping = {
+        version(false)
+    }
 }

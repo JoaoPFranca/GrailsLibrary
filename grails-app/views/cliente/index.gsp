@@ -40,10 +40,7 @@
 
       </table>
 
-        <div class="paginate">
-            <g:paginate total="${total ?: 0}" />
 
-        </div>
 
  </div>
 </div>

@@ -16,4 +16,8 @@ class Cliente {
         email(email: true, nullable: false, unique: true, blank: false)
 
     }
+
+    static mapping = {
+        version(false)
+    }
 }
