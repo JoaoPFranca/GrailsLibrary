@@ -18,7 +18,7 @@
             </tr>
             </thead>
              <tbody>
-                <g:each in="${clienteList}" var="info">
+                <g:each in="${cliente}" var="info">
                     <tr>
                         <td>${info?.nomecompleto}</td>
                         <td>${info?.telefone}</td>

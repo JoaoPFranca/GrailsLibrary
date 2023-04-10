@@ -14,10 +14,10 @@
             <g:textField name="bibliotecario" class="form-control" value="${emprestimo?.bibliotecario}"/>
 
             <label> Livro </label>
-            <g:textField name="titulodolivro" class="form-control" value="${emprestimo?.livroId}"/>
+            <g:textField name="livro" class="form-control" value="${emprestimo?.livroId}"/>
 
             <label> Autor do emprestimo </label>
-            <g:textField name="nomedocliente" class="form-control" value="${emprestimo?.clienteId}"/>
+            <g:textField name="cliente" class="form-control" value="${emprestimo?.clienteId}"/>
         </div>
 
 
