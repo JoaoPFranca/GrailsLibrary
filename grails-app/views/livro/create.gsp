@@ -18,8 +18,9 @@
 
 
         <div class="form-action-panel">
-            <g:submitButton class="btn btn-primary" name="save" value="${g.message(code: "save")}"/>
-            <g:link controller="livro" action="index" class="btn btn-primary"/>
+            <br>
+            <g:submitButton class="btn btn-primary" name="save" value="${g.message(code: "Salvar")}"/>
+            <g:link controller="livro" action="index" class="btn btn-primary"> Index </g:link>
         </div>
 
     </g:form>
