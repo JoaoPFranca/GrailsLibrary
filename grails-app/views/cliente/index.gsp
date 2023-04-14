@@ -1,11 +1,6 @@
 
 <meta name="layout" content="main"/>
 
-<div class="card">
-    <div class="card-header">
-        <g:message code="cliente" args="['List']"/>
-
-    </div>
 
     <div class="card-body">
         <table class="table table-bordered">
@@ -26,9 +21,8 @@
                         <td>${info?.endereco}</td>
                         <td>
                             <div class="btn-group">
-                                <g:link controller="cliente" action="details" class="btn btn-secondary" id="${info.id}"><i class="fas fa-eye"></i></g:link>
-                                <g:link controller="cliente" action="edit" class="btn btn-secondary" id="${info.id}"><i class="fas fa-edit"></i></g:link>
-                                <g:link controller="cliente" action="delete" id="${info.id}" class="btn btn-secondary delete-confirmation"><i class="fas fa-trash"></i></g:link>
+                                <g:link controller="cliente" action="details" class="btn btn-secondary" id="${info.id}">Detalhar</g:link>
+                                <g:link controller="cliente" action="delete" id="${info.id}" class="btn btn-secondary delete-confirmation">Excluir</g:link>
                             </div>
                         </td>
                     </tr>
@@ -43,5 +37,5 @@
 
 
  </div>
-</div>
+
 

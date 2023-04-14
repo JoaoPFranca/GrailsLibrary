@@ -13,10 +13,10 @@
             <label> Bibliotecário Responsável: </label>
             <g:textField name="bibliotecario" class="form-control" value="${emprestimo?.bibliotecario}"/>
 
-            <label> Livro </label>
+            <label> ID do Livro </label>
             <g:textField name="livro" class="form-control" value="${emprestimo?.livroId}"/>
 
-            <label> Autor do emprestimo </label>
+            <label> ID do Autor do Emprestimo </label>
             <g:textField name="cliente" class="form-control" value="${emprestimo?.clienteId}"/>
         </div>
 
