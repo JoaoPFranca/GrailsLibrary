@@ -34,6 +34,17 @@ class ClienteService {
         return [list: clienteList, count: Cliente.count()]
     }
 
-
-
+    def delete(Cliente cliente) {
+        try {
+            cliente.delete(flush: true)
+        } catch (Exception e) {
+            println(e.getMessage())
+            return false
+        }
+        return true
+    }
 }
+
+
+
+

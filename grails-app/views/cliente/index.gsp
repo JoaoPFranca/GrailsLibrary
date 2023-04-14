@@ -1,11 +1,6 @@
 
 <meta name="layout" content="main"/>
 
-<div class="card">
-    <div class="card-header">
-        <g:message code="cliente" args="['List']"/>
-
-    </div>
 
     <div class="card-body">
         <table class="table table-bordered">
@@ -18,7 +13,7 @@
             </tr>
             </thead>
              <tbody>
-                <g:each in="${clienteList}" var="info">
+                <g:each in="${cliente}" var="info">
                     <tr>
                         <td>${info?.nomecompleto}</td>
                         <td>${info?.telefone}</td>
@@ -26,9 +21,8 @@
                         <td>${info?.endereco}</td>
                         <td>
                             <div class="btn-group">
-                                <g:link controller="cliente" action="details" class="btn btn-secondary" id="${info.id}"><i class="fas fa-eye"></i></g:link>
-                                <g:link controller="cliente" action="edit" class="btn btn-secondary" id="${info.id}"><i class="fas fa-edit"></i></g:link>
-                                <g:link controller="cliente" action="delete" id="${info.id}" class="btn btn-secondary delete-confirmation"><i class="fas fa-trash"></i></g:link>
+                                <g:link controller="cliente" action="details" class="btn btn-secondary" id="${info.id}">Detalhar</g:link>
+                                <g:link controller="cliente" action="delete" id="${info.id}" class="btn btn-secondary delete-confirmation">Excluir</g:link>
                             </div>
                         </td>
                     </tr>
@@ -40,11 +34,8 @@
 
       </table>
 
-        <div class="paginate">
-            <g:paginate total="${total ?: 0}" />
 
-        </div>
 
  </div>
-</div>
+
 

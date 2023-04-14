@@ -18,7 +18,7 @@ class EmprestimoService {
     }
 
     def getById(Serializable id) {
-        return Cliente.get(id)
+        return Emprestimo.get(id)
     }
 
     def list(GrailsParameterMap params) {
