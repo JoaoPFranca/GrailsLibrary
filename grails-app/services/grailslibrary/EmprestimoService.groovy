@@ -28,9 +28,19 @@ class EmprestimoService {
                 like(params.colName, "%" +  params.colValue + "%")
             }
             if (!params.sort){
-                order("id","datadeemprestimo")
+                order("id","bibliotecario")
             }
         }
         return [list:emprestimoList, count:emprestimoList.totalCount]
+    }
+
+    def devolver(Emprestimo emprestimo) {
+        try {
+            emprestimo.delete(flush: true)
+        } catch (Exception e) {
+            println(e.getMessage())
+            return false
+        }
+        return true
     }
 }
