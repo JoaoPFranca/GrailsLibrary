@@ -7,8 +7,8 @@ class EmprestimoController {
     ClienteService clienteService
 
     def index() {
-        def response = clienteService.list(params)
-        [cliente: response.list, total: response.count]
+        def response = emprestimoService.list(params)
+        [emprestimo: response.list, total: response.count]
     }
 
     def create() {
@@ -22,6 +22,16 @@ class EmprestimoController {
             flash.redirectParams = response.model
             redirect(controller: "emprestimo", action: "create")
         }else{
+            redirect(controller: "emprestimo", action: "index")
+        }
+    }
+
+    def devolver(Integer id) {
+        def response = emprestimoService.getById(id)
+        if (!response){
+            redirect(controller: "emprestimo", action: "index")
+        }else{
+            response = emprestimoService.devolver(response)
             redirect(controller: "emprestimo", action: "index")
         }
     }

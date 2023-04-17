@@ -35,6 +35,16 @@ class LivroService {
         return [list: livroList, count: Livro.count()]
     }
 
+    def delete(Livro livro) {
+        try {
+            livro.delete(flush: true)
+        } catch (Exception e) {
+            println(e.getMessage())
+            return false
+        }
+        return true
+    }
+
 
 
 }

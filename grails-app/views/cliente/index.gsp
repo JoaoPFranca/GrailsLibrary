@@ -10,6 +10,7 @@
                 <g:sortableColumn property="telefone" title="Telefone"/>
                 <g:sortableColumn property="email" title="E-mail"/>
                 <g:sortableColumn property="endereco" title="Endereço"/>
+                <g:sortableColumn property="ID" title="ID"/>
             </tr>
             </thead>
              <tbody>
@@ -19,6 +20,7 @@
                         <td>${info?.telefone}</td>
                         <td>${info?.email}</td>
                         <td>${info?.endereco}</td>
+                        <td>${info?.id}</td>
                         <td>
                             <div class="btn-group">
                                 <g:link controller="cliente" action="details" class="btn btn-secondary" id="${info.id}">Detalhar</g:link>
