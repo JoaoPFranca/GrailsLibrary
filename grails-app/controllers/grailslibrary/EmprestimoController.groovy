@@ -17,12 +17,11 @@ class EmprestimoController {
     }
 
     def save() {
-        def response = emprestimoService.save(params)
-        if (!response.isSuccess) {
-            flash.redirectParams = response.model
-            redirect(controller: "emprestimo", action: "create")
-        }else{
-            redirect(controller: "emprestimo", action: "index")
+        def emprestimo = new Emprestimo(params)
+        if (emprestimo.save()) {
+            render 'success'
+          } else {
+            render 'error'
         }
     }
 

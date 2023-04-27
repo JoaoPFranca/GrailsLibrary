@@ -7,7 +7,6 @@ class EmprestimoService {
 
     def save(GrailsParameterMap params) {
         Emprestimo emprestimo = new Emprestimo(params)
-        def response = AppUtil.saveResponse(false, emprestimo)
         if (emprestimo.validate()) {
             emprestimo.save(flush: true)
             if (!emprestimo.hasErrors()){
