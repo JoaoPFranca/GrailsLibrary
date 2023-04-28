@@ -5,10 +5,8 @@
     <form id="formulario">
 
         <div>
-            <label>Data do Emprestimo</label>
-            <g:hiddenField name="datadeemprestimo" class="form-control" value="${emprestimo?.datadeemprestimo}"/>
 
-            <br>
+            <g:hiddenField name="datadeemprestimo" class="form-control" value="${emprestimo?.datadeemprestimo}"/>
 
             <label>Bibliotecário Responsável:</label>
             <g:textField name="bibliotecario" class="form-control" value="${emprestimo?.bibliotecario}"/>
