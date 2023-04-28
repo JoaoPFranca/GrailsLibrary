@@ -1,7 +1,7 @@
 <meta name="layout" content="main"/>
 
 
-<div class="card-body">
+<div id="conteudo" class="card-body">
     <form id="formulario">
 
         <div>
@@ -23,7 +23,7 @@
 
         <div class=" form-action-panel">
             <br>
-            <g:submitButton id="myButton" class="btn btn-primary" name="save" value="Salvar"/>
+            <a href="#" id="myButton" class="btn btn-primary">Salvar</a>
             <g:link controller="emprestimo" action="index" class="btn btn-primary">Index</g:link>
         </div>
 
@@ -38,12 +38,14 @@
                 url: 'save',
                 type: 'POST',
                 data: $('#formulario').serialize(),
-                success: function () {
-                    window.location = "index";
+
+                success: function (data) {
+                    $('#conteudo').html(data);
                 },
             });
         });
     });
 
-</script>
 
+
+</script>

@@ -19,11 +19,12 @@ class EmprestimoController {
     def save() {
         def emprestimo = new Emprestimo(params)
         if (emprestimo.save()) {
-            render 'success'
+            render template: 'listagem', model: [emprestimo: emprestimo.list()]
           } else {
             render 'error'
         }
     }
+    //a tarefa dada era de carregar o template para que não seja necessário mudar de página
 
     def devolver(Integer id) {
         def response = emprestimoService.getById(id)
