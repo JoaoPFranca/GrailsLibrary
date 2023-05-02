@@ -38,8 +38,13 @@
                 data: $('#formulario').serialize(),
 
                 success: function (data) {
-                    $('#conteudo').html(data);
+                    $('#conteudo').html(data); //redirecionar se houver sucesso
                 },
+
+                error: function(jqXHR) {
+                  alert(jqXHR.responseText); //O método "ResponseText" é o que "traz" a resposta do servidor como uma string.
+                }
+
             });
         });
     });

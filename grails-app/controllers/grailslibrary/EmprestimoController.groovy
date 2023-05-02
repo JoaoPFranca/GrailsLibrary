@@ -18,19 +18,36 @@ class EmprestimoController {
 
     def save() {
         def emprestimo = new Emprestimo(params)
+
+        // Abaixo eu fiz mensagens de erro para cada erro possível.
+        if (!emprestimo.livro) {
+            render text: "Você deve selecionar um livro existente", status: 500
+            return
+        }
+        if (!emprestimo.cliente) {
+            render text: "Você deve selecionar um cliente existente", status: 500
+            return
+        }
+        if (emprestimo.bibliotecario == null) {
+            render text: "Insira o nome do Bibliotecário", status: 500
+            return
+        }
+
+
+
         if (emprestimo.save()) {
             render template: 'listagem', model: [emprestimo: emprestimo.list()]
-          } else {
-            render 'error'
+        } else {
+            render text: emprestimo.errors, status: 500
         }
     }
-    //a tarefa dada era de carregar o template para que não seja necessário mudar de página
+
 
     def devolver(Integer id) {
         def response = emprestimoService.getById(id)
-        if (!response){
+        if (!response) {
             redirect(controller: "emprestimo", action: "index")
-        }else{
+        } else {
             response = emprestimoService.devolver(response)
             redirect(controller: "emprestimo", action: "index")
         }
