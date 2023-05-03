@@ -44,12 +44,12 @@ class EmprestimoController {
 
 
     def devolver(Integer id) {
-        def response = emprestimoService.getById(id)
-        if (!response) {
-            redirect(controller: "emprestimo", action: "index")
-        } else {
-            response = emprestimoService.devolver(response)
-            redirect(controller: "emprestimo", action: "index")
+        Emprestimo emprestimo = Emprestimo.get(id)
+        if (!emprestimo) {
+            render text: "ID Não encontrado", status: 404
+            return
         }
+        emprestimo.delete(flush: true)
+        render template: 'listagem', model: [emprestimo: emprestimo.list()]
     }
 }
