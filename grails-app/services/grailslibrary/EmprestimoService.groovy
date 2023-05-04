@@ -16,9 +16,6 @@ class EmprestimoService {
         return response
     }
 
-    def getById(Serializable id) {
-        return Emprestimo.get(id)
-    }
 
     def list(GrailsParameterMap params) {
         params.max = params.max?: GlobalConfig.itemsPerPage()

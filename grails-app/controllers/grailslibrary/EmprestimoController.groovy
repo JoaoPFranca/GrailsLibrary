@@ -1,4 +1,5 @@
 package grailslibrary
+import grails.web.servlet.mvc.GrailsParameterMap
 
 class EmprestimoController {
 
@@ -13,6 +14,10 @@ class EmprestimoController {
 
     def create() {
         [emprestimo: flash.redirectParams]
+
+        def livroList = Livro.list() // retrieve all Livro objects from the database
+        def clienteList = Cliente.list() // retrieve all Cliente objects from the database
+        [clienteList: clienteList, livroList: livroList] // pass the list to the view
 
     }
 
@@ -44,12 +49,16 @@ class EmprestimoController {
 
 
     def devolver(Integer id) {
-        Emprestimo emprestimo = Emprestimo.get(id)
+        Emprestimo emprestimo = Emprestimo.get(id) // GetID sem precisar fazer um método
         if (!emprestimo) {
-            render text: "ID Não encontrado", status: 404
+            render text: "ID Não encontrado", status: 404 // forcei o erro 404 para mostrar o "render text"
             return
         }
-        emprestimo.delete(flush: true)
+        emprestimo.delete(flush: true) // O "flush: true" serve para sincronizar as mudanças feitas com o Banco de Dados.
         render template: 'listagem', model: [emprestimo: emprestimo.list()]
     }
+
+
 }
+
+

@@ -26,6 +26,8 @@
                         <g:link controller="emprestimo" action="details" class="btn btn-secondary" id="${info.id}">Detalhar</g:link>
                         <a href="#" data-id="${info?.id}" class="dev btn btn-primary">Devolver</a>
 
+                        %{-- ao invés de fazer como "id = dev", deixamos dev como class, pq id é algo único, e aí só pega o primeiro item. --}%
+
 %{--                        <g:link controller="emprestimo" action="devolver" id="${info.id}" class="btn btn-secondary delete-confirmation">Devolver</g:link>--}%
                     </div>
                 </td>
@@ -46,18 +48,18 @@
 <script>
     $(document).ready(function() {
         $('.dev').click(function () {
-            const id = $(this).data('id');
+            const id = $(this).data('id'); // Eu não estava pegando o ID. então usei essa const para pegar
 
             $.ajax({
-                url: 'devolver/' + id,
-                type: 'DELETE',
-                data: $('#formulario').serialize(),
+                url: 'devolver/' + id, // Aqui eu passei o id do objeto selecionado para a URL.
+                type: 'DELETE', // Nesse caso, usei o delete. Aqui não tem muita diferença entre usar POST ou Delete, mas numa aplicação maior, eu teria que determinar qual utilizar
+                data: $('#formulario').serialize(), // O serialize serve para "separar" cada campo de input.
 
                 success: function (data) {
-                    $('#conteudo').html(data);
+                    $('#conteudo').html(data);  //redirecionar se houver sucesso
                 },
                 error: function (jqxhr) {
-                    alert(jqxhr.responseText)
+                    alert(jqxhr.responseText) //O método "ResponseText" é o que "traz" a resposta do servidor como uma string.
                 }
             })
         })

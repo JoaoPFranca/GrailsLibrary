@@ -1,3 +1,4 @@
+<%@ page import="grailslibrary.EmprestimoService" %>
 <meta name="layout" content="main"/>
 
 
@@ -12,10 +13,10 @@
             <g:textField name="bibliotecario" class="form-control" value="${emprestimo?.bibliotecario}"/>
 
             <label>ID do Livro</label>
-            <g:textField name="livro" class="form-control" value="${emprestimo?.livroId}"/>
+            <g:select id= "livro" name="livro" from="${livroList}" optionValue="titulo" class="form-control" value="${emprestimo?.livroId}" noSelection="['':'']"/>
 
-            <label>ID do Autor do Emprestimo</label>
-            <g:textField name="cliente" class="form-control" value="${emprestimo?.clienteId}"/>
+            <label>ID do Cliente autor do Emprestimo</label>
+            <g:select id= "cliente" name="cliente" from="${clienteList}" optionValue="nomecompleto" class="form-control" value="${emprestimo?.clienteId}" noSelection="['':'']"/>
         </div>
 
 
@@ -31,6 +32,7 @@
 <script>
 
     $(document).ready(function () {
+
         $('#myButton').click(function () {
             $.ajax({
                 url: 'save',
@@ -47,7 +49,13 @@
 
             });
         });
+
+
+
+
     });
 
 
 </script>
+
+
