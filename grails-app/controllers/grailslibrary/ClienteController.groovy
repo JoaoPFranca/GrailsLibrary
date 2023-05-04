@@ -25,12 +25,11 @@ class ClienteController {
     }
 
     def save() {
-        def response = clienteService.save(params)
-        if (!response.isSuccess) {
-            flash.redirectParams = response.model
-            redirect(controller: "cliente", action: "create")
-        }else{
-            redirect(controller: "cliente", action: "index")
+        def cliente = new Cliente(params)
+        if (cliente.save()) {
+            render template: 'listagem', model: [cliente: cliente.list()]
+        } else {
+            render 'error'
         }
     }
 

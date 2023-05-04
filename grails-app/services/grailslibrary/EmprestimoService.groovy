@@ -7,7 +7,6 @@ class EmprestimoService {
 
     def save(GrailsParameterMap params) {
         Emprestimo emprestimo = new Emprestimo(params)
-        def response = AppUtil.saveResponse(false, emprestimo)
         if (emprestimo.validate()) {
             emprestimo.save(flush: true)
             if (!emprestimo.hasErrors()){
@@ -17,9 +16,6 @@ class EmprestimoService {
         return response
     }
 
-    def getById(Serializable id) {
-        return Emprestimo.get(id)
-    }
 
     def list(GrailsParameterMap params) {
         params.max = params.max?: GlobalConfig.itemsPerPage()
