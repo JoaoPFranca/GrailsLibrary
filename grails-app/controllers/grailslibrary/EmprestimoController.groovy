@@ -28,6 +28,7 @@ class EmprestimoController {
     def save() {
         def emprestimo = new Emprestimo(params)
 
+
         // Abaixo eu fiz mensagens de erro para cada erro possível.
         if (!emprestimo.livro) {
             render text: "Você deve selecionar um livro existente", status: 500

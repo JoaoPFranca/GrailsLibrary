@@ -14,8 +14,9 @@
 
             <label for="livroinput">Livro</label>
             <br>
-            <input type="text" id="livroinput" name="livro" class="livro-busca"/>
+            <input type="text" id="livroinput" name="livro" class="livro-busca" />
 
+%{--            Colocar um hidden pro id embaixo e através do function, passá-lo --}%
 
 %{--            <g:select id= "livro" name="livro" from="${livroList}" optionValue="titulo" class="form-control" value="${emprestimo?.livroId}" noSelection="['':'']"/>--}%
 
@@ -61,7 +62,8 @@
                 source: "${createLink(controller:'livro', action:'buscarLivros')}",
                 minLength: 1,
                 select: function (event, ui) {
-                    $('.livro-id').val(ui.item.id);
+                    $("#livroBusca").val(ui.item.label);
+                    $("#livroId").val(ui.item.label);
                 }
             });
 
