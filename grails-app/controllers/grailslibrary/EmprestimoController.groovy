@@ -1,5 +1,6 @@
 package grailslibrary
 import grails.web.servlet.mvc.GrailsParameterMap
+import grails.converters.JSON
 
 class EmprestimoController {
 
@@ -13,11 +14,14 @@ class EmprestimoController {
     }
 
     def create() {
-        [emprestimo: flash.redirectParams]
+        def emprestimo = new Emprestimo(params)
+        def livro = Livro.findByTitulo(params.livroBusca)
+        emprestimo.livro = livro
 
         def livroList = Livro.list() // retrieve all Livro objects from the database
         def clienteList = Cliente.list() // retrieve all Cliente objects from the database
         [clienteList: clienteList, livroList: livroList] // pass the list to the view
+
 
     }
 
@@ -57,6 +61,7 @@ class EmprestimoController {
         emprestimo.delete(flush: true) // O "flush: true" serve para sincronizar as mudanças feitas com o Banco de Dados.
         render template: 'listagem', model: [emprestimo: emprestimo.list()]
     }
+
 
 
 }
