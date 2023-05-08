@@ -51,10 +51,18 @@ class LivroController {
         def livros = Livro.findAllByTituloLike("%${params.term}%")
         def resultado = livros.collect { livro ->
             [
-                    label: livro.titulo,
-                    value: livro.id
+                    id: livro.id,
+                    value: livro.titulo
             ]
         }
         render resultado as JSON
     }
+
+    def getIdByTitulo() {
+        def titulo = params.titulo
+        def livro = Livro.findByTitulo(titulo)
+        render livro.id as JSON
+    }
+
 }
+
