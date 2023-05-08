@@ -12,4 +12,5 @@
 //= require bootstrap.bundle
 //= require popper.min
 //= require_self
+//= require jquery-ui
 

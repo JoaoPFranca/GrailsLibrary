@@ -1,5 +1,7 @@
 package grailslibrary
 
+import grails.converters.JSON
+
 import javax.xml.bind.ValidationException
 
 class LivroController {
@@ -13,9 +15,9 @@ class LivroController {
 
     def details(Integer id) {
         def response = livroService.getById(id)
-        if (!response){
+        if (!response) {
             redirect(controller: "livro", action: "index")
-        }else{
+        } else {
             [livro: response]
         }
     }
@@ -29,23 +31,38 @@ class LivroController {
         if (!response.isSuccess) {
             flash.redirectParams = response.model
             redirect(controller: "livro", action: "create")
-        }else{
+        } else {
             redirect(controller: "livro", action: "index")
         }
     }
 
 
-
     def delete(Integer id) {
         def response = livroService.getById(id)
-        if (!response){
+        if (!response) {
             redirect(controller: "livro", action: "index")
-        }else{
+        } else {
             response = livroService.delete(response)
             redirect(controller: "livro", action: "index")
         }
     }
 
+    def buscarLivros() {
+        def livros = Livro.findAllByTituloLike("%${params.term}%")
+        def resultado = livros.collect { livro ->
+            [
+                    id: livro.id,
+                    value: livro.titulo
+            ]
+        }
+        render resultado as JSON
+    }
 
+    def getIdByTitulo() {
+        def titulo = params.titulo
+        def livro = Livro.findByTitulo(titulo)
+        render livro.id as JSON
+    }
 
 }
+
